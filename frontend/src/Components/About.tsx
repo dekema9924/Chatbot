@@ -28,16 +28,16 @@ function About() {
                         },
                         {
                             title: 'Capabilities',
-                            text1: 'Explain Quantum physics for a begiiner',
-                            text2: 'How can I choose the right domain for my site',
-                            text3: 'What are some intermediate MERN projects',
+                            text1: 'Natural Language Understanding',
+                            text2: 'Programming Assistance',
+                            text3: 'Idea Generation & Creativity Support',
                             icon: <FlareIcon/>
                         },
                         {
                             title: 'Limitations',
-                            text1: 'Explain Quantum physics for a begiiner',
-                            text2: 'How can I choose the right domain for my site',
-                            text3: 'What are some intermediate MERN projects',
+                            text1: 'Lack of Real-Time Knowledge',
+                            text2: 'does not have live access to the internet',
+                            text3: 'processes text based on patterns ',
                             icon: <ProductionQuantityLimitsIcon/>
                         }
                     ].map((text, index) => {

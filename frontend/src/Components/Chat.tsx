@@ -54,52 +54,59 @@ function Chat() {
     return (
         <>
 
-            <div className="flex flex-col h-full">
-                {/* User response */}
-                <div className="mt-10 my-4 ml-auto relative flex-grow overflow-y-auto mr-14">
-                    {myMessage.length > 0 &&
-                        myMessage.map((mychat, index) => (
-                            <div key={index} className="flex items-center my-4 gap-2">
-                                <img className="w-8 h-8 object-cover rounded-full" src={user.pfp ?? "https://placehold.co/400"} alt="User" />
-                                <p className="text-start p-4 rounded-lg w-44 bg-[#3F3F3F]">
-                                    {mychat.text}
-                                </p>
-                            </div>
-                        ))
-                    }
-
-                </div>
-
-                {/* Gemini (Bot) Response */}
-                <div className="flex flex-col gap-2 relative flex-grow overflow-y-auto p-4  w-8/12">
-                    <p onClick={ClearChat} className=' text-xs bg-black rounded-md p-2 cursor-pointer w-24 uppercase'>Clear Chat</p>
-                    {loading ? (
-                        <div className="flex items-center gap-1 ml-10 text-xs">What do you want to know<DotsLoading /></div>
-                    ) : (
-                        botResponse.length > 0 &&
-                        botResponse.map((bot, index) => (
-                            <div key={index} className="flex items-center bg-black rounded-lg max-w-6/12 p-4 ">
-                                <SmartToyIcon className="w-8 h-8 object-cover rounded-full mr-2" />
-                                <p className="bg-black max-h-44 overflow-y-auto sp-4">{bot.text}</p>
-                            </div>
-                        ))
-                    )}
-                </div>
+<div className="flex flex-col h-screen bg-[#1E1E1E] text-white">
+    {/* Chat Messages */}
+    <div className="flex flex-col flex-grow overflow-auto p-6 space-y-4">
+        
+        {/* User Messages */}
+        {myMessage.length > 0 && myMessage.map((mychat, index) => (
+            <div key={index} className="flex items-end justify-end">
+                <p className="bg-[#3F3F3F] text-white text-sm p-3 rounded-lg max-w-xs">
+                    {mychat.text}
+                </p>
+                <img className="w-8 h-8 object-cover rounded-full ml-2" 
+                     src={user.pfp ?? "https://placehold.co/400"} 
+                     alt="User" />
             </div>
+        ))}
 
-            {/* Chat Input */}
-            <form onSubmit={HandleSubmit} className="fixed w-full flex justify-center bottom-0 left-0 z-10">
-                <input
-                    onChange={(e) => setChatText(e.target.value)}
-                    className="w-full rounded-2xl bg-[#121212] h-20 outline-none pl-7"
-                    type="text"
-                    value={chatText}
-                    placeholder="Type your message..."
-                />
-                <button className="cursor-pointer relative" type="submit">
-                    <SendIcon className="absolute right-5 top-1/2 transform -translate-y-1/2" />
-                </button>
-            </form>
+        {/* Bot Messages */}
+        {loading ? (
+            <div className="flex items-center gap-1 ml-10 text-xs">What do you want to know<DotsLoading /></div>
+        ) : (
+            botResponse.length > 0 && botResponse.map((bot, index) => (
+                <div key={index} className="flex items-start">
+                    <SmartToyIcon className="w-8 h-8 rounded-full mr-2 bg-gray-700 p-1" />
+                    <p className="bg-gray-800 text-white text-sm p-3 rounded-lg max-w-xs">
+                        {bot.text}
+                    </p>
+                </div>
+            ))
+        )}
+    </div>
+
+    {/* Clear Chat Button */}
+    <div className="flex justify-center mb-2">
+        <button onClick={ClearChat} className="text-xs bg-red-600 hover:bg-red-700 text-white rounded-md px-4 py-2 uppercase">
+            Clear Chat
+        </button>
+    </div>
+
+    {/* Chat Input */}
+    <form onSubmit={HandleSubmit} className="flex items-center bg-[#121212] p-4 border-t border-gray-700">
+        <input
+            onChange={(e) => setChatText(e.target.value)}
+            className="flex-1 bg-transparent text-white placeholder-gray-400 outline-none px-4 py-3 rounded-lg"
+            type="text"
+            value={chatText}
+            placeholder="Type your message..."
+        />
+        <button type="submit" className="ml-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg">
+            <SendIcon className="w-6 h-6" />
+        </button>
+    </form>
+</div>
+
 
         </>
     )
