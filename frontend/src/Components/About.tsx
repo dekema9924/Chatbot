@@ -3,6 +3,7 @@ import SportsVolleyballIcon from '@mui/icons-material/SportsVolleyball';
 import ChatIcon from '@mui/icons-material/Chat';
 import FlareIcon from '@mui/icons-material/Flare';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import Login from './Login';
 
 
 
@@ -56,6 +57,8 @@ function About() {
                 }
 
             </div>
+
+            <Login/>
         </>
     )
 }
