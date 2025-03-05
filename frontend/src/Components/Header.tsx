@@ -10,6 +10,7 @@ import { getUser } from '../features/UserSlice';
 import { RootState } from '../store/store';
 import Cookies from'js-cookie'
 import  LogOut  from './LogOut';
+import Settings from './Settings';
 
 
 function Header() {
@@ -18,6 +19,7 @@ function Header() {
     const dispatch = useDispatch()
     const user = useSelector((state: RootState) => state.user.value)
     const cookies = Cookies.get('connect.sid')
+    const[showSettings, setShowSettings] = useState(false)
     
     useEffect(()=>{
         axios.get(`${config.backendUrl}/profile`, { withCredentials: true }).then((response) => {
@@ -26,6 +28,11 @@ function Header() {
             navigate('/gemini')
         })
     },[cookies])
+
+    const HandleRemoveSetting=()=>{
+        setShowSettings(true)
+        setDropDownClicked(false)
+    }
 
 
     return (
@@ -41,7 +48,7 @@ function Header() {
                     {
                         dropdownClicked && (
                             <div className='w-44  h-fit p-6 absolute right-0 top-12 bg-[#121212] rounded-lg flex flex-col gap-4 z-50'>
-                                <p className='flex  gap-1 items-center font-bold cursor-pointer hover:underline'>
+                                <p onClick={HandleRemoveSetting} className='flex  gap-1 items-center font-bold cursor-pointer hover:underline'>
                                     <SettingsIcon />
                                     Settings
                                 </p>
@@ -51,6 +58,12 @@ function Header() {
                     }
                 </div>
             </header>
+
+            <div>
+                {
+                    showSettings ? <Settings setShowSettings={setShowSettings}/> : ""
+                }
+            </div>
         </>
     )
 }
