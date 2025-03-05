@@ -1,7 +1,6 @@
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../config/config';
@@ -10,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../features/UserSlice';
 import { RootState } from '../store/store';
 import Cookies from'js-cookie'
+import  LogOut  from './LogOut';
 
 
 function Header() {
@@ -19,20 +19,18 @@ function Header() {
     const user = useSelector((state: RootState) => state.user.value)
     const cookies = Cookies.get('connect.sid')
     
-    console.log(cookies)
-
     useEffect(()=>{
         axios.get(`${config.backendUrl}/profile`, { withCredentials: true }).then((response) => {
-            console.log(response)
+            // console.log(response)
             dispatch(getUser({ name: response.data.result._json.name, pfp: response.data.result._json.picture }))
             navigate('/gemini')
         })
-    },[])
+    },[cookies])
 
 
     return (
         <>
-            <header className='flex items-center justify-between h-16'>
+            <header className='flex items-center justify-between h-24'>
                 <div>
                     <p className='ml-5 my-1'>Gemini Flash2.0</p>
                     <p className='ml-5'>{user.name}</p>
@@ -47,10 +45,7 @@ function Header() {
                                     <SettingsIcon />
                                     Settings
                                 </p>
-                                <p className='flex gap-1  items-center font-bold cursor-pointer hover:underline'>
-                                    <LogoutIcon />
-                                    LogOff
-                                </p>
+                               <LogOut/>
                             </div>
                         )
                     }
