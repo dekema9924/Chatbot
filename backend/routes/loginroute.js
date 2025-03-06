@@ -11,16 +11,16 @@ loginroute.get('/auth/google',
 
 
 loginroute.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', { failureRedirect: '/' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/');
+        res.redirect('http://localhost:5173/gemini');
 });
 
-
-
-loginroute.get('/', (req, res) => {
-    res.send("login route")
+loginroute.get('/', (req,res)=>{
+    res.send('Homepage')
 })
+
+
 
 module.exports = loginroute
