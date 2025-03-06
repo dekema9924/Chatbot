@@ -50,9 +50,6 @@ cd gemini-chatbot
 ✔ **Project Structure**  
 ✔ **Usage Instructions**  
 ✔ **Tech Stack**  
-✔ **Future Improvements**  
-✔ **Contribution Guide**  
-✔ **License & Credits**  
 
 Let me know if you want any changes! 🚀
 
