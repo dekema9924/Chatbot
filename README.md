@@ -7,7 +7,6 @@ This is an AI-powered chatbot using **Google Gemini AI**, built with **React (fr
 ✅ Real-time chat interface  
 ✅ Responsive UI with Tailwind CSS  
 ✅ Express.js backend with API handling  
-✅ Dark mode UI  
 
 ---
 
@@ -40,4 +39,21 @@ gemini-chatbot/
 ```sh
 git clone https://github.com/yourusername/gemini-chatbot.git
 cd gemini-chatbot
+
+
+
+---
+
+### 🔥 **What’s Included in This README?**
+✔ **Project Overview**  
+✔ **Installation Guide**  
+✔ **Project Structure**  
+✔ **Usage Instructions**  
+✔ **Tech Stack**  
+✔ **Future Improvements**  
+✔ **Contribution Guide**  
+✔ **License & Credits**  
+
+Let me know if you want any changes! 🚀
+
 
