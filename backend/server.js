@@ -13,7 +13,7 @@ const cors = require('cors')
 //middleware
 app.use(
     cors({
-         origin: "http://localhost:5173", 
+         origin: "https://67d79f189fa679620f01a751--effortless-pastelito-663bf8.netlify.app/", 
          methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
          credentials: true, 
    })
