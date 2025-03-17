@@ -13,7 +13,7 @@ const cors = require('cors')
 //middleware
 app.use(
     cors({
-         origin: "https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app/", 
+         origin: "https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app", 
          methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
          credentials: true, 
    })
