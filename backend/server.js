@@ -13,10 +13,10 @@ const cors = require('cors')
 //middleware
 app.use(
     cors({
-         origin: "https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app", 
-         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-         credentials: true, 
-   })
+        origin: "https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        credentials: true,
+    })
 );
 
 app.use(session({
@@ -25,8 +25,9 @@ app.use(session({
     saveUninitialized: false, // Avoid storing uninitialized sessions
     cookie: {
         maxAge: 20 * 60 * 1000, // 20 minutes
-        secure: true,
-        sameSite: 'None'
+        secure: process.env.NODE_ENV === 'production',  // Only secure cookies in production
+        // httpOnly: true,          // Prevent cookie access via JavaScript
+        sameSite: process.env.NODE_ENV === 'production' ? 'Strict' : 'Lax',  // 'Lax' for local dev
     }
 }));
 
@@ -41,7 +42,7 @@ app.use('/api', airoute)
 
 
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`server open on port ${port}`)
 })
 
