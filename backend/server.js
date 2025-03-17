@@ -13,19 +13,19 @@ const cors = require('cors')
 //middleware
 app.use(
     cors({
-         origin: "https://bot019.netlify.app", 
-         methods: "GET,HEAD,branchPUT,PATCH,POST,DELETE",
-         credentials: true, 
-   })
-);
-
-app.use(session({
+      origin: "https://bot019.netlify.app", 
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",  // Fixed method typo
+      credentials: true, 
+    })
+  );
+  
+  app.use(session({
     secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,  // Prevents unnecessary session resaving
+    saveUninitialized: false,  // Avoid saving empty sessions
     cookie: {
       maxAge: 20 * 60 * 1000, // 20 minutes
-      secure: process.env.NODE_ENV === 'production',  // Ensure it's secure only in production
+      secure: process.env.NODE_ENV === 'production',  // Only secure in production
       sameSite: 'None',  // Required for cross-origin requests
       path: '/',
     }
