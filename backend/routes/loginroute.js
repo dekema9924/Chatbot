@@ -14,7 +14,7 @@ loginroute.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/gemini');
+        res.redirect('https://bot019.netlify.app/gemini');
 });
 
 loginroute.get('/', (req,res)=>{
