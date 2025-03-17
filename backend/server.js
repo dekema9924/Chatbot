@@ -24,16 +24,13 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     cookie: {
-        // maxAge: 20000, //20seconds for testing
-        maxAge: 20 * 60 * 1000, // 20 minutes in milliseconds
-        // httpOnly: true,  // Prevent client-side access to cookie
-        secure: true,    // Ensures cookie is sent over HTTPS
-        sameSite: 'None', // Required for cross-origin requests
-        path: '/',       // Make sure it's accessible across all routes
-        
-      }
-
-}));
+      maxAge: 20 * 60 * 1000, // 20 minutes
+      secure: process.env.NODE_ENV === 'production',  // Ensure it's secure only in production
+      sameSite: 'None',  // Required for cross-origin requests
+      path: '/',
+    }
+  }));
+  
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', loginroute)
