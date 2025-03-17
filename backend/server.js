@@ -26,9 +26,10 @@ app.use(session({
     cookie: {
         // maxAge: 20000, //20seconds for testing
         maxAge: 20 * 60 * 1000, // 20 minutes in milliseconds
-        // secure: process.env.NODE_ENV === 'production',
-        // httpOnly: false, // Helps prevent XSS attacks
-        // sameSite: 'Strict', // CSRF protection
+        // httpOnly: true,  // Prevent client-side access to cookie
+        secure: true,    // Ensures cookie is sent over HTTPS
+        sameSite: 'None', // Required for cross-origin requests
+        path: '/',       // Make sure it's accessible across all routes
         
       }
 
