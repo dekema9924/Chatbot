@@ -14,7 +14,7 @@ loginroute.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app/');
+        res.redirect('https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app/gemini');
 });
 
 loginroute.get('/', (req,res)=>{
