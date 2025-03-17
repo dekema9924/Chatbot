@@ -30,7 +30,7 @@ function Chat() {
             { text: chatText }
         ])
 
-
+        axios.defaults.withCredentials = true
         //post chat
         await axios.post(`${config.backendUrl}/api`, {
             text: chatText
