@@ -13,7 +13,7 @@ const cors = require('cors')
 //middleware
 app.use(
     cors({
-         origin: "https://67d839b66d951f3371902874--monumental-piroshki-3176da.netlify.app", 
+         origin: "https://bot1u1.netlify.app", 
          methods: "GET,HEAD,branchPUT,PATCH,POST,DELETE",
          credentials: true, 
    })
