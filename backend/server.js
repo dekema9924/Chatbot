@@ -13,24 +13,26 @@ const cors = require('cors')
 //middleware
 app.use(
     cors({
-        origin: "https://67d7af3cd38ae1e8b4d70fc8--famous-biscotti-f67277.netlify.app",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        credentials: true,
-    })
+         origin: "https://67d839b66d951f3371902874--monumental-piroshki-3176da.netlify.app", 
+         methods: "GET,HEAD,branchPUT,PATCH,POST,DELETE",
+         credentials: true, 
+   })
 );
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    resave: false,  // Set to false to avoid unnecessary session writes
-    saveUninitialized: false, // Avoid storing uninitialized sessions
+    resave: true,
+    saveUninitialized: true,
     cookie: {
-        maxAge: 20 * 60 * 1000, // 20 minutes
-        secure: process.env.NODE_ENV === 'production',  // Only secure cookies in production
-        // httpOnly: true,          // Prevent cookie access via JavaScript
-        sameSite: process.env.NODE_ENV === 'production' ? 'Strict' : 'Lax',  // 'Lax' for local dev
-    }
-}));
+        // maxAge: 20000, //20seconds for testing
+        maxAge: 20 * 60 * 1000, // 20 minutes in milliseconds
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: false, // Helps prevent XSS attacks
+        sameSite: 'Strict', // CSRF protection
+        
+      }
 
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', loginroute)
@@ -42,7 +44,7 @@ app.use('/api', airoute)
 
 
 
-app.listen(port, () => {
+app.listen(port, ()=>{
     console.log(`server open on port ${port}`)
 })
 
