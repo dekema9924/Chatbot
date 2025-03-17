@@ -26,9 +26,9 @@ app.use(session({
     cookie: {
         // maxAge: 20000, //20seconds for testing
         maxAge: 20 * 60 * 1000, // 20 minutes in milliseconds
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: false, // Helps prevent XSS attacks
-        sameSite: 'Strict', // CSRF protection
+        // secure: process.env.NODE_ENV === 'production',
+        // httpOnly: false, // Helps prevent XSS attacks
+        // sameSite: 'Strict', // CSRF protection
         
       }
 
