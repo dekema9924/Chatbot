@@ -14,7 +14,7 @@ loginroute.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('http://localhost:5173/gemini');
+        res.redirect('https://chatbot-ovll.onrender.com');
 });
 
 loginroute.get('/', (req,res)=>{
