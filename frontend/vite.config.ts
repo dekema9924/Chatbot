@@ -9,7 +9,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/gemini/',  // Make sure this matches the URL path
 
 
 })
