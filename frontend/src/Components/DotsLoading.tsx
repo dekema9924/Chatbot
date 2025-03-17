@@ -1,4 +1,3 @@
-import React from "react";
 const DotsLoading = () => {
   return (
     <div className="flex justify-center items-center space-x-2  w-10">

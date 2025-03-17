@@ -1,6 +1,6 @@
 
 const config = {
-    backendUrl: "http://localhost:3000",
+    backendUrl: "https://chatbot-ovll.onrender.com",
   };
   
   export default config;
