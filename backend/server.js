@@ -21,19 +21,16 @@ app.use(
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,  // Set to false to avoid unnecessary session writes
+    saveUninitialized: false, // Avoid storing uninitialized sessions
     cookie: {
-        // maxAge: 20000, //20seconds for testing
-        maxAge: 20 * 60 * 1000, // 20 minutes in milliseconds
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: false, // Helps prevent XSS attacks
-        sameSite: 'Strict', // CSRF protection
-        
-
-      }
-
+        maxAge: 20 * 60 * 1000, // 20 minutes
+        secure: process.env.NODE_ENV === 'production',  // Only use 'secure' in production
+        httpOnly: true,          // Prevent cookie access via JavaScript
+        sameSite: process.env.NODE_ENV === 'production' ? 'Strict' : 'Lax',  // 'Lax' for local dev
+    }
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', loginroute)
